@@ -26,13 +26,9 @@ class Item{
         return name;
     }
 
-    public float selectItem(){
-        if(getCount()>0){
-            this.count--;
-            return this.getPrice();
-        }else{
-            return -1;
-        }
+    public void deCount(){
+        count--;
+        System.out.println("count of "+name+" = "+count);
     }
 }
 
@@ -46,17 +42,6 @@ class Currency{
     }
 }
 
-//class CurrencyList extends ArrayList<Currency>{
-//
-//    // change with limited coins problem
-//    public String getChange(){
-//        if(true) {
-//            return "Change List";
-//        }else{
-//            return "";
-//        }
-//    }
-//}
 
 class SVM {
     ArrayList<Item> Items;
@@ -80,7 +65,7 @@ class SVM {
     private void sellItem(int id){
         if(this.getItemCount(id)>0) {
             totalRevenue += this.getItemPrice(id);
-            Items.get(getIdIndex(id)).count--;
+            Items.get(getIdIndex(id)).deCount();
         }
     }
 
@@ -178,8 +163,10 @@ class SVM {
     }
 
     public void SelectItem(int id){
+        System.out.println("count ="+this.getItemCount(id));
         if(this.getItemCount(id)<=0){
             System.out.println("sorry this Item Sold out");
+            return;
         }
         Scanner in = new Scanner(System.in);
         float price = getItemPrice(id);
@@ -235,6 +222,7 @@ class SVM {
                     System.out.println("total change :" + change);
                     System.out.println("please take the change"+getChange(change));
                     System.out.println("thanks for order from my SVM");
+                    this.sellItem(id);
                     state = 0;
 
                     break;

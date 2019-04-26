@@ -13,7 +13,7 @@ public class Main {
         SVM svm = new SVM();
 
         //machine setup
-        svm.addItem(1,"Cola",5,(float) 0.3);
+        svm.addItem(1,"Cola",5,(float) 0.2);
         svm.addItem(2,"Pringles",5,(float) 0.5);
         svm.addItem(3,"Snickers",5,(float) 1);
         svm.addItem(4,"Kinder ",5,(float) .8);
